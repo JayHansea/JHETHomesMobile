@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-import styles from "./FooterStyles";
+import styles from "./Footer.Style";
 import { COLORS } from "../../constants/theme";
 import { WidthSpacer } from "../spacer/Spacer";
 
