@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FlatList, SafeAreaView, Text } from "react-native";
 import { Footer, Slide } from "../../components/Index";
-import styles from "./OnboardingStyles";
+import styles from "./Onboarding.Style";
 import { SIZES } from "../../constants/theme";
 
 const slides = [

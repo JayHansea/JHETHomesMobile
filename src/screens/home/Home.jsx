@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, Text } from "react-native";
-import styles from "./HomeStyles";
+import styles from "./Home.Style";
 
 const Home = () => {
   return (
