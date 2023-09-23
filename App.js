@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Onboarding, Home } from './src/screens/Index';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Onboarding, Home } from "./src/screens/Index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
-
 
 export default function App() {
   const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null);
@@ -13,15 +12,15 @@ export default function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const appData = await AsyncStorage.getItem('isAppFirstLaunched');
+        const appData = await AsyncStorage.getItem("isAppFirstLaunched");
         if (appData === null) {
           setIsAppFirstLaunched(true);
-          await AsyncStorage.setItem('isAppFirstLaunched', 'false');
+          await AsyncStorage.setItem("isAppFirstLaunched", "false");
         } else {
           setIsAppFirstLaunched(false);
         }
       } catch (error) {
-        console.error('Error while fetching data:', error);
+        console.error("Error while fetching data:", error);
       }
     }
 
@@ -41,4 +40,3 @@ export default function App() {
     )
   );
 }
-

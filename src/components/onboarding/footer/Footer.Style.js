@@ -1,15 +1,15 @@
 import { StyleSheet } from "react-native";
-import { COLORS, SIZES } from "../../constants/theme";
+import { COLORS, SIZES } from "../../../constants/theme";
 
 const styles = StyleSheet.create({
   container: {
     height: SIZES.height * 0.25,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     paddingHorizontal: 20,
   },
   indicatorContainer: {
     flexDirection: "row",
-    justifyContent: 'center',
+    justifyContent: "center",
     marginTop: 20,
   },
   indicator: {
@@ -30,16 +30,16 @@ const styles = StyleSheet.create({
     height: 50,
   },
   btnContainer: {
-    flexDirection: 'row'
+    flexDirection: "row",
   },
   btn: {
     // flex: 1,
     height: 50,
-    width: '48%',  
+    width: "48%",
     borderRadius: 5,
     backgroundColor: COLORS.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   getStartedBtn: {
     // flex: 1,
@@ -47,13 +47,13 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 5,
     backgroundColor: COLORS.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   btnText: {
-    fontWeight: 'bold',
-    fontSize: 15
-  }
-})
+    fontWeight: "bold",
+    fontSize: 15,
+  },
+});
 
 export default styles;

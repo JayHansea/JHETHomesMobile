@@ -5,11 +5,11 @@ import styles from "./Slide.Style";
 const Slide = ({ item }) => {
   return (
     <View style={styles.container}>
-      <Image source={item.image} style={styles.imageStyle}/>
+      <Image source={item.image} style={styles.imageStyle} />
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.description}>{item.description}</Text>
     </View>
-  )
-}
+  );
+};
 
 export default Slide;
