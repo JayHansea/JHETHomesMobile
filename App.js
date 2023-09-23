@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Onboarding, Home } from "./src/screens/Index";
+import { Onboarding, Home, Filter, Notifications } from "./src/screens/Index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
@@ -35,6 +35,8 @@ export default function App() {
             <Stack.Screen name="Onboarding" component={Onboarding} />
           )}
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Filter" component={Filter} />
+          <Stack.Screen name="Notifications" component={Notifications} />
         </Stack.Navigator>
       </NavigationContainer>
     )
