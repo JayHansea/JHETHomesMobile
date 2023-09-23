@@ -39,6 +39,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  tabsContainer: {
+    width: "100%",
+    marginTop: SIZES.medium,
+  },
+  tab: (activeProductCategory, item) => ({
+    paddingVertical: SIZES.medium / 2,
+    paddingHorizontal: SIZES.small,
+    borderRadius: SIZES.medium,
+    backgroundColor:
+      activeProductCategory === item ? COLORS.secondary : COLORS.lightGray,
+  }),
+  tabText: (activeProductCategory, item) => ({
+    color: activeProductCategory === item ? COLORS.white : COLORS.secondary,
+  }),
 });
 
 export default styles;
