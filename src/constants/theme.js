@@ -9,7 +9,8 @@ const COLORS = {
   lightBlue: "#ECF6FF",
   darkBlue: "#004483",
 
-  successGreen: "#007420",
+  green: "#008000",
+  red: "#EC1717",
 
   lightGray: "#F1F1F1",
   gray: "#83829A",
