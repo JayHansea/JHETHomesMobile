@@ -3,21 +3,29 @@ import { COLORS, SIZES, SHADOWS } from "../../../constants/theme";
 
 const styles = StyleSheet.create({
   cardContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    flexWrap: "wrap",
+    paddingVertical: SIZES.medium,
+    paddingHorizontal: SIZES.xSmall,
   },
   card: {
-    width: SIZES.width / 2.5,
-    marginHorizontal: SIZES.xSmall,
-    marginVertical: SIZES.medium,
+    width: SIZES.width / 1.8,
+    padding: SIZES.medium,
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.medium,
+    justifyContent: "space-between",
+    ...SHADOWS.medium,
+    shadowColor: COLORS.white,
+  },
+  favoriteContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    paddingBottom: SIZES.xSmall,
   },
   image: {
-    width: SIZES.width / 2.5,
-    height: 200,
+    width: SIZES.width / 2.12,
+    height: 130,
   },
   title: {
-    width: SIZES.width / 2.5,
+    width: SIZES.width / 2.12,
     marginTop: SIZES.medium,
   },
   priceView: {
