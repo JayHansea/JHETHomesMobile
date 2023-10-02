@@ -1,22 +1,36 @@
-import { View, Text, Pressable, ImageBackground } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { View, Text, Pressable, Image } from "react-native";
 import styles from "./SalesCard.Style";
 import ReusableText from "../../reusables/text/ReusableText";
 import { COLORS, SIZES } from "../../../constants/theme";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const SalesCard = ({ primeProducts }) => {
+const SalesCard = ({ product }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
   return (
     <View style={styles.cardContainer}>
-      {primeProducts.map((product, index) => (
-        <Pressable key={index} style={styles.card}>
-          <ImageBackground
+      <Pressable>
+        <View style={styles.card}>
+          <View style={styles.favoriteContainer}>
+            <Pressable onPress={toggleFavorite}>
+              <MaterialIcons
+                name={isFavorite ? "favorite" : "favorite-outline"}
+                size={24}
+                color={COLORS.red}
+              />
+            </Pressable>
+          </View>
+          <Image
             source={product.product_photo}
             resizeMode="contain"
             style={styles.image}
-          ></ImageBackground>
+          />
           <View style={styles.title}>
             <ReusableText
-              numberOfLines={3}
+              numberOfLines={2}
               style={styles.title}
               text={product.product_title}
               fontSize={SIZES.medium}
@@ -29,8 +43,8 @@ const SalesCard = ({ primeProducts }) => {
               {product.product_original_price}
             </Text>
           </View>
-        </Pressable>
-      ))}
+        </View>
+      </Pressable>
     </View>
   );
 };

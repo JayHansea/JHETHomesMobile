@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import ReusableHeader from "../../reusables/header/ReusableHeader";
 import SalesCard from "../../cards/sales/SalesCard";
 import { TempProductData } from "../../../data/TempData";
+import { SIZES } from "../../../constants/theme";
 
 const Sales = () => {
   // Filter products where is_prime is true
@@ -13,7 +14,14 @@ const Sales = () => {
   return (
     <View>
       <ReusableHeader header={"Promo Sales"} link={"See All"} />
-      <SalesCard primeProducts={primeProducts} />
+      <FlatList
+        data={primeProducts}
+        renderItem={({ item }) => <SalesCard product={item} />}
+        keyExtractor={(item) => item.asin}
+        contentContainerStyle={{ columnGap: SIZES.medium }}
+        horizontal
+      />
+      {/* <SalesCard primeProducts={primeProducts} /> */}
     </View>
   );
 };
