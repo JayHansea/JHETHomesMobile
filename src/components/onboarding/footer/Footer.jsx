@@ -29,7 +29,7 @@ const Footer = ({
           <View style={styles.getStartedContainer}>
             <TouchableOpacity
               style={styles.getStartedBtn}
-              onPress={() => navigation.replace("Home")}
+              onPress={() => navigation.replace("BottomTab")}
             >
               <Text style={[styles.btnText, { color: COLORS.white }]}>
                 Get Started
