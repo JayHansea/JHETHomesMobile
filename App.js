@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Onboarding, Home, Filter, Notifications } from "./src/screens/Index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import BottomTabNavigation from "./src/navigation/BottomTabNavigation";
 
 const Stack = createStackNavigator();
 
@@ -34,7 +35,7 @@ export default function App() {
           {isAppFirstLaunched && (
             <Stack.Screen name="Onboarding" component={Onboarding} />
           )}
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="BottomTab" component={BottomTabNavigation} />
           <Stack.Screen name="Filter" component={Filter} />
           <Stack.Screen name="Notifications" component={Notifications} />
         </Stack.Navigator>
