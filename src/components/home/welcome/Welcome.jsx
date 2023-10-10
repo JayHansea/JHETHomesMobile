@@ -7,6 +7,7 @@ import {
   FlatList,
 } from "react-native";
 import ReusableText from "../../reusables/text/ReusableText";
+import SearchBar from "../../reusables/searchBar/SearchBar";
 import { COLORS, SIZES } from "../../../constants/theme";
 import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
 import styles from "./Welcome.Style";
@@ -35,10 +36,7 @@ const Welcome = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={styles.searchContainer}>
-        <View style={styles.searchWrapper}>
-          <Feather name="search" size={24} color={COLORS.gray} />
-          <TextInput style={styles.searchInput} placeholder="Search products" />
-        </View>
+        <SearchBar />
 
         <TouchableOpacity
           style={styles.searchBtn}
