@@ -9,7 +9,7 @@ import Products from "../../components/home/products/Products";
 const Home = ({ navigation }) => {
   return (
     <ScrollView>
-      <SafeAreaView style={reusable.container}>
+      <SafeAreaView style={[reusable.container, styles.container]}>
         <Welcome navigation={navigation} />
         <Sales />
         <Products />

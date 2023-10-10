@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
+    marginLeft: SIZES.small,
   },
   tabsContainer: {
     width: "100%",

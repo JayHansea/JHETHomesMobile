@@ -7,7 +7,9 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
+import ScreenHeaderBtn from "../components/reusables/screenHeader/ScreenHeaderBtn";
 import { COLORS, SIZES } from "../constants/theme";
+import { left } from "../constants/icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -50,7 +52,10 @@ const BottomTabNavigation = () => {
         options={{
           tabBarStyle: tabBarStyle,
           tabBarLabel: "Shop",
-          headerShown: false,
+          headerShown: true,
+          title: "Products",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name={focused ? "search" : "search-outline"}
