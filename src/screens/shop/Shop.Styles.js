@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: SIZES.small,
     height: 50,
+    marginBottom: SIZES.medium,
   },
 });
 
