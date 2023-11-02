@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./ProductCardItem.Style";
 import ReusableText from "../../reusables/text/ReusableText";
 import { SIZES, COLORS } from "../../../constants/theme";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
 const ProductCardItem = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -38,6 +38,9 @@ const ProductCardItem = ({ product }) => {
       </View>
       <View style={styles.priceView}>
         <Text style={styles.productPrice}>{product.product_price}</Text>
+        <Pressable>
+          <AntDesign name="pluscircleo" size={24} color={COLORS.primary} />
+        </Pressable>
       </View>
     </Pressable>
   );
