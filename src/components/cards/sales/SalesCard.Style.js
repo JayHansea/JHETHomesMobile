@@ -28,6 +28,12 @@ const styles = StyleSheet.create({
     width: SIZES.width / 2.12,
     marginTop: SIZES.medium,
   },
+  priceNAddView: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: SIZES.small,
+    justifyContent: "space-between",
+  },
   priceView: {
     flexDirection: "row",
     alignItems: "center",

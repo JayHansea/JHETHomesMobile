@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: SIZES.small,
+    justifyContent: "space-between",
   },
   productPrice: {
     color: COLORS.green,

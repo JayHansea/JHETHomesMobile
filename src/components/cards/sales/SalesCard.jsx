@@ -3,7 +3,7 @@ import { View, Text, Pressable, Image } from "react-native";
 import styles from "./SalesCard.Style";
 import ReusableText from "../../reusables/text/ReusableText";
 import { COLORS, SIZES } from "../../../constants/theme";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
 const SalesCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -36,12 +36,17 @@ const SalesCard = ({ product }) => {
               fontSize={SIZES.medium}
             />
           </View>
-          <View style={styles.priceView}>
-            <Text style={styles.discountPrice}>{product.product_price}</Text>
-            <Text style={styles.priceSeperator}> - </Text>
-            <Text style={styles.originalPrice}>
-              {product.product_original_price}
-            </Text>
+          <View style={styles.priceNAddView}>
+            <View style={styles.priceView}>
+              <Text style={styles.discountPrice}>{product.product_price}</Text>
+              <Text style={styles.priceSeperator}> - </Text>
+              <Text style={styles.originalPrice}>
+                {product.product_original_price}
+              </Text>
+            </View>
+            <Pressable>
+              <AntDesign name="pluscircleo" size={24} color={COLORS.primary} />
+            </Pressable>
           </View>
         </View>
       </Pressable>
