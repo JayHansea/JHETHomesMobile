@@ -4,9 +4,26 @@ import styles from "./SalesCard.Style";
 import ReusableText from "../../reusables/text/ReusableText";
 import { COLORS, SIZES } from "../../../constants/theme";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../../store/cart-slice";
+import { formatPrice } from "../../../utils";
 
 const SalesCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(
+      cartActions.addToCart({
+        product_title: product.product_title,
+        product_photo: product.product_photo,
+        product_price: formatPrice(product.product_price),
+        product_id: product.asin,
+      })
+    );
+  };
+
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
   };
@@ -44,7 +61,7 @@ const SalesCard = ({ product }) => {
                 {product.product_original_price}
               </Text>
             </View>
-            <Pressable>
+            <Pressable onPress={addToCart}>
               <AntDesign name="pluscircleo" size={24} color={COLORS.primary} />
             </Pressable>
           </View>
