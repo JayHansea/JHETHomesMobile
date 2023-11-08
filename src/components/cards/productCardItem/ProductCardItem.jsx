@@ -4,7 +4,7 @@ import styles from "./ProductCardItem.Style";
 import ReusableText from "../../reusables/text/ReusableText";
 import { SIZES, COLORS } from "../../../constants/theme";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 import { formatPrice } from "../../../utils";
 
