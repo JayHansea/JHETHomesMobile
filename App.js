@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Onboarding, Home, Filter, Notifications } from "./src/screens/Index";
+import { Onboarding, Filter, Notifications } from "./src/screens/Index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import BottomTabNavigation from "./src/navigation/BottomTabNavigation";
+import { Provider, useSelector } from "react-redux";
+import { store } from "./src/store";
 
 const Stack = createStackNavigator();
 
@@ -29,17 +31,19 @@ export default function App() {
   }, []);
 
   return (
-    isAppFirstLaunched != null && (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {isAppFirstLaunched && (
-            <Stack.Screen name="Onboarding" component={Onboarding} />
-          )}
-          <Stack.Screen name="BottomTab" component={BottomTabNavigation} />
-          <Stack.Screen name="Filter" component={Filter} />
-          <Stack.Screen name="Notifications" component={Notifications} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    )
+    <Provider store={store}>
+      {isAppFirstLaunched != null && (
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {isAppFirstLaunched && (
+              <Stack.Screen name="Onboarding" component={Onboarding} />
+            )}
+            <Stack.Screen name="BottomTab" component={BottomTabNavigation} />
+            <Stack.Screen name="Filter" component={Filter} />
+            <Stack.Screen name="Notifications" component={Notifications} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      )}
+    </Provider>
   );
 }
