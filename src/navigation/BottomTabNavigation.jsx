@@ -71,7 +71,10 @@ const BottomTabNavigation = () => {
         options={{
           tabBarStyle: tabBarStyle,
           tabBarLabel: "Favorite",
-          headerShown: false,
+          headerShown: true,
+          title: "My Favorite",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
           tabBarIcon: ({ focused }) => (
             <MaterialIcons
               name={focused ? "favorite" : "favorite-outline"}
@@ -87,7 +90,10 @@ const BottomTabNavigation = () => {
         options={{
           tabBarStyle: tabBarStyle,
           tabBarLabel: "Cart",
-          headerShown: false,
+          headerShown: true,
+          title: "Cart",
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name={focused ? "shopping" : "shopping-outline"}

@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Text } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
 import styles from "./Home.Style";
 import reusable from "../../components/reusables/styles/Reusable.Style";
 import Welcome from "../../components/home/welcome/Welcome";

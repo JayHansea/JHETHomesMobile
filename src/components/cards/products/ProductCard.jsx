@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, Pressable, Image } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import styles from "./ProductCard.Style";
 import ProductCardItem from "../productCardItem/ProductCardItem";
 
