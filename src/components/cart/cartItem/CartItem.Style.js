@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lightBlue,
     height: SIZES.height * 0.15,
     padding: SIZES.small,
+    marginVertical: SIZES.medium,
     borderRadius: SIZES.xSmall,
     ...SHADOWS.small,
   },
@@ -37,6 +38,12 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginRight: SIZES.small,
+  },
+  emptyCartText: {
+    height: SIZES.height * 0.6,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
