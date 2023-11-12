@@ -2,12 +2,14 @@ import { View, Text, Pressable } from "react-native";
 import React from "react";
 import styles from "./CartFooter.Style";
 
-const CartFooter = () => {
+const CartFooter = ({ quantity }) => {
   return (
     <View style={styles.container}>
       <View style={styles.cartDetails}>
         <View style={styles.textContainer}>
-          <Text>Sub Total (2 Items):</Text>
+          <Text>{`Sub Total (${
+            quantity <= 1 ? `${quantity} item` : `${quantity} items`
+          })`}</Text>
           <Text>$100.00</Text>
         </View>
         <View style={styles.textContainer}>

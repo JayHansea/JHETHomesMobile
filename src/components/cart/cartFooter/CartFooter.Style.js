@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     height: SIZES.height * 0.28,
     justifyContent: "space-between",
     padding: SIZES.medium,
+    backgroundColor: COLORS.white,
   },
   cartDetails: {
     backgroundColor: COLORS.lightBlue,
