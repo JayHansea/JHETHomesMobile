@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     height: SIZES.height,
   },
+  emptyCartText: {
+    height: SIZES.height * 0.6,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default styles;
