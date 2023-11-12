@@ -39,12 +39,6 @@ const styles = StyleSheet.create({
   deleteButton: {
     marginRight: SIZES.small,
   },
-  emptyCartText: {
-    height: SIZES.height * 0.6,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
 });
 
 export default styles;

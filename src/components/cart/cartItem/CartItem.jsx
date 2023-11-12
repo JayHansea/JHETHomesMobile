@@ -9,12 +9,23 @@ import { cartActions } from "../../../store/cart-slice";
 import { TempProductData } from "../../../data/TempData";
 import { formatPrice } from "../../../utils";
 
-const CartItem = ({ image, name, price, quantity }) => {
+const CartItem = ({ image, name, price, quantity, id }) => {
   const dispatch = useDispatch();
 
-  const incrementCartItem = () => {};
+  const incrementCartItem = () => {
+    dispatch(
+      cartActions.addToCart({
+        product_title: name,
+        product_photo: image,
+        product_price: price,
+        product_id: id,
+      })
+    );
+  };
 
-  const decrementCartItem = () => {};
+  const decrementCartItem = () => {
+    dispatch(cartActions.removeFromCart(id));
+  };
 
   return (
     <View style={styles.container}>
@@ -39,7 +50,7 @@ const CartItem = ({ image, name, price, quantity }) => {
           <View style={styles.row}>
             <View style={styles.quantity}>
               <Pressable
-                onPress={() => decrementCartItem(item.product_id)}
+                onPress={decrementCartItem}
                 style={styles.quantityButton}
               >
                 <Text>-</Text>
@@ -48,7 +59,7 @@ const CartItem = ({ image, name, price, quantity }) => {
                 <Text>{quantity}</Text>
               </Pressable>
               <Pressable
-                onPress={() => incrementCartItem(item.product_id)}
+                onPress={incrementCartItem}
                 style={styles.quantityButton}
               >
                 <Text>+</Text>
