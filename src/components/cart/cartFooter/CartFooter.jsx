@@ -2,7 +2,13 @@ import { View, Text, Pressable } from "react-native";
 import React from "react";
 import styles from "./CartFooter.Style";
 
-const CartFooter = ({ quantity }) => {
+const CartFooter = ({ quantity, total }) => {
+  const deliveryFee = (total) => {
+    return (2.5 / 100) * total;
+  };
+
+  const finalFee = deliveryFee(total) + total;
+
   return (
     <View style={styles.container}>
       <View style={styles.cartDetails}>
@@ -10,15 +16,15 @@ const CartFooter = ({ quantity }) => {
           <Text>{`Sub Total (${
             quantity <= 1 ? `${quantity} item` : `${quantity} items`
           })`}</Text>
-          <Text>$100.00</Text>
+          <Text>{`$${total}`}</Text>
         </View>
         <View style={styles.textContainer}>
-          <Text>Delivery:</Text>
-          <Text>$20.00</Text>
+          <Text>Delivery (2.5% of Sub Total):</Text>
+          <Text>{`$${deliveryFee(total).toFixed(2)}`}</Text>
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.total}>Total:</Text>
-          <Text style={styles.total}>$120.00</Text>
+          <Text style={styles.total}>{`$${finalFee.toFixed(2)}`}</Text>
         </View>
       </View>
       <Pressable style={styles.button}>

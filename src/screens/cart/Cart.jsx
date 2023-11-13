@@ -7,7 +7,15 @@ import CartFooter from "../../components/cart/cartFooter/CartFooter";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
+  let total = 0;
   const cartItems = useSelector((state) => state.cart.itemsList);
+
+  cartItems.forEach((item) => {
+    total += parseFloat(item.totalPrice);
+  });
+
+  console.log(total);
+
   const quantity = useSelector((state) => state.cart.totalQuantity);
   console.log(quantity);
   return (
@@ -33,7 +41,7 @@ const Cart = () => {
           )}
         </View>
       </ScrollView>
-      <CartFooter quantity={quantity} />
+      <CartFooter quantity={quantity} total={total} />
     </SafeAreaView>
   );
 };
