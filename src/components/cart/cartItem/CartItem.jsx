@@ -6,8 +6,6 @@ import { COLORS, SIZES } from "../../../constants/theme";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
-import { TempProductData } from "../../../data/TempData";
-import { formatPrice } from "../../../utils";
 
 const CartItem = ({ image, name, price, quantity, id }) => {
   const dispatch = useDispatch();
