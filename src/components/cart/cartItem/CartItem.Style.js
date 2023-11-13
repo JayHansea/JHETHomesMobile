@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+  },
+  justify: {
     justifyContent: "space-between",
   },
   imageContainer: {
@@ -26,18 +28,27 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%", // Ensure the image takes up the full height of the container
   },
-  textContainer: { justifyContent: "space-between" },
+  textContainer: {
+    justifyContent: "space-between",
+    width: SIZES.width * 0.62,
+  },
   quantity: {
     flexDirection: "row",
   },
   quantityButton: {
     borderColor: COLORS.gray,
     borderWidth: 1,
-    paddingHorizontal: 6,
+    paddingHorizontal: 9,
+    paddingVertical: 3,
     marginRight: 6,
+    borderRadius: 50,
   },
   deleteButton: {
     marginRight: SIZES.small,
+    padding: 2,
+    borderColor: COLORS.gray,
+    borderWidth: 1,
+    borderRadius: 50,
   },
 });
 

@@ -1,7 +1,6 @@
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import React from "react";
 import styles from "./Cart.Style";
-import reusable from "../../components/reusables/styles/Reusable.Style";
 import CartItem from "../../components/cart/cartItem/CartItem";
 import CartFooter from "../../components/cart/cartFooter/CartFooter";
 import { useSelector } from "react-redux";
@@ -20,8 +19,8 @@ const Cart = () => {
   console.log(quantity);
   return (
     <SafeAreaView>
-      <ScrollView>
-        <View style={[reusable.container, styles.container]}>
+      <View style={styles.container}>
+        <ScrollView>
           {cartItems.length === 0 ? (
             <View style={styles.emptyCartText}>
               <Text>Your cart is empty</Text>
@@ -39,9 +38,11 @@ const Cart = () => {
               />
             ))
           )}
+        </ScrollView>
+        <View style={styles.summaryContainer}>
+          <CartFooter quantity={quantity} total={total} />
         </View>
-      </ScrollView>
-      <CartFooter quantity={quantity} total={total} />
+      </View>
     </SafeAreaView>
   );
 };
