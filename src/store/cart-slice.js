@@ -57,6 +57,13 @@ const cartSlice = createSlice({
       }
       state.totalQuantity--;
     },
+    deleteItem(state, action) {
+      const id = action.payload;
+      state.itemsList = state.itemsList.filter(
+        (item) => item.product_id !== id
+      );
+      state.totalQuantity--;
+    },
     setShowCart(state) {
       state.showCart = true;
     },

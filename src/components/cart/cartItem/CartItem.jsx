@@ -25,6 +25,10 @@ const CartItem = ({ image, name, price, quantity, id }) => {
     dispatch(cartActions.removeFromCart(id));
   };
 
+  const deleteCartItem = () => {
+    dispatch(cartActions.deleteItem(id));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -36,7 +40,7 @@ const CartItem = ({ image, name, price, quantity, id }) => {
             numberOfLines={1}
             style={styles.text}
             text={name}
-            maxWidth={"80%"}
+            maxWidth={"70%"}
           />
           <ReusableText
             numberOfLines={1}
@@ -45,7 +49,7 @@ const CartItem = ({ image, name, price, quantity, id }) => {
             fontWeight={"bold"}
             fontSize={SIZES.medium}
           />
-          <View style={styles.row}>
+          <View style={[styles.row, styles.justify]}>
             <View style={styles.quantity}>
               <Pressable
                 onPress={decrementCartItem}
@@ -63,15 +67,13 @@ const CartItem = ({ image, name, price, quantity, id }) => {
                 <Text>+</Text>
               </Pressable>
             </View>
-            <View>
-              <Pressable style={styles.deleteButton}>
-                <MaterialIcons
-                  name="delete-outline"
-                  size={24}
-                  color={COLORS.gray}
-                />
-              </Pressable>
-            </View>
+            <Pressable onPress={deleteCartItem} style={styles.deleteButton}>
+              <MaterialIcons
+                name="delete-outline"
+                size={24}
+                color={COLORS.secondary}
+              />
+            </Pressable>
           </View>
         </View>
       </View>
