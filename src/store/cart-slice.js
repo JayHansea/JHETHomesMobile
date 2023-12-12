@@ -6,7 +6,6 @@ const cartSlice = createSlice({
   initialState: {
     itemsList: [],
     totalQuantity: 0,
-    showCart: false,
   },
   reducers: {
     addToCart(state, action) {
@@ -59,13 +58,16 @@ const cartSlice = createSlice({
     },
     deleteItem(state, action) {
       const id = action.payload;
+      // Remove the item with the given id from the itemsList
       state.itemsList = state.itemsList.filter(
         (item) => item.product_id !== id
       );
-      state.totalQuantity--;
-    },
-    setShowCart(state) {
-      state.showCart = true;
+
+      // Recalculate the totalQuantity based on the remaining items
+      state.totalQuantity = state.itemsList.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
     },
   },
 });
