@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import styles from "./Home.Style";
 import reusable from "../../components/reusables/styles/Reusable.Style";
@@ -8,8 +8,13 @@ import Products from "../../components/home/products/Products";
 import { useSelector } from "react-redux";
 
 const Home = ({ navigation }) => {
-  const cartItems = useSelector((state) => state.cart.itemsList);
-  console.log(cartItems);
+  const cart = useSelector((state) => state.cart);
+  useEffect(() => {
+    fetch("https://jhetmart-default-rtdb.firebaseio.com/cartItems.json", {
+      method: "PUT",
+      body: JSON.stringify(cart),
+    });
+  }, [cart]);
   return (
     <ScrollView>
       <SafeAreaView style={[reusable.container, styles.container]}>

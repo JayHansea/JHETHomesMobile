@@ -6,6 +6,7 @@ import { COLORS, SIZES } from "../../../constants/theme";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
+import { formatPrice } from "../../../utils";
 
 const CartItem = ({ image, name, price, quantity, id }) => {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const CartItem = ({ image, name, price, quantity, id }) => {
           />
           <ReusableText
             numberOfLines={1}
-            text={price}
+            text={`$${formatPrice(price)}`}
             style={styles.text}
             fontWeight={"bold"}
             fontSize={SIZES.medium}
