@@ -16,7 +16,7 @@ const CartFooter = ({ quantity, total }) => {
           <Text>{`Sub Total (${
             quantity <= 1 ? `${quantity} item` : `${quantity} items`
           })`}</Text>
-          <Text>{`$${total}`}</Text>
+          <Text>{`$${total.toFixed(2)}`}</Text>
         </View>
         <View style={styles.textContainer}>
           <Text>Delivery (2.5% of Sub Total):</Text>
