@@ -6,6 +6,7 @@ import Welcome from "../../components/home/welcome/Welcome";
 import Sales from "../../components/home/salesProduct/Sales";
 import Products from "../../components/home/products/Products";
 import { useSelector } from "react-redux";
+import ToastMessage from "../../components/toast/ToastMessage";
 
 const Home = ({ navigation }) => {
   const cart = useSelector((state) => state.cart);
@@ -21,6 +22,7 @@ const Home = ({ navigation }) => {
         <Welcome navigation={navigation} />
         <Sales />
         <Products />
+        <ToastMessage />
       </SafeAreaView>
     </ScrollView>
   );
