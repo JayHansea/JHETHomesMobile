@@ -1,46 +1,57 @@
 import { Animated, View, Text, StyleSheet } from "react-native";
 import React, { useEffect, useRef } from "react";
 import { COLORS, SIZES, SHADOWS } from "../../constants/theme";
+import { useSelector, useDispatch } from "react-redux";
+import { toastActions } from "../../store/toast-slice";
 
 const ToastMessage = () => {
+  const dispatch = useDispatch();
+  const toast = useSelector((state) => state.toast.toast);
   const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    Animated.sequence([
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-      Animated.delay(2000),
-      Animated.timing(opacity, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, []);
+    if (toast) {
+      Animated.sequence([
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+        Animated.delay(2000),
+        Animated.timing(opacity, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+      ]).start(() => {
+        // Hide toast after animation
+        dispatch(toastActions.hideToast());
+      });
+    }
+  }, [toast, dispatch]);
 
   return (
     <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.animatedContainer,
-          {
-            opacity,
-            transform: [
-              {
-                translateY: opacity.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [-20, 0],
-                }),
-              },
-            ],
-          },
-        ]}
-      >
-        <Text>Toast Message</Text>
-      </Animated.View>
+      {toast && (
+        <Animated.View
+          style={[
+            styles.animatedContainer,
+            {
+              opacity,
+              transform: [
+                {
+                  translateY: opacity.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [-20, 0],
+                  }),
+                },
+              ],
+            },
+          ]}
+        >
+          <Text>{toast.message}</Text>
+        </Animated.View>
+      )}
     </View>
   );
 };
