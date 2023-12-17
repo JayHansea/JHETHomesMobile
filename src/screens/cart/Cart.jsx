@@ -4,6 +4,7 @@ import styles from "./Cart.Style";
 import CartItem from "../../components/cart/cartItem/CartItem";
 import CartFooter from "../../components/cart/cartFooter/CartFooter";
 import { useSelector } from "react-redux";
+import ToastMessage from "../../components/toast/ToastMessage";
 
 const Cart = () => {
   let total = 0;
@@ -43,6 +44,7 @@ const Cart = () => {
           <CartFooter quantity={quantity} total={total} />
         </View>
       </View>
+      <ToastMessage />
     </SafeAreaView>
   );
 };

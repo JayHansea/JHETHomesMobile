@@ -4,6 +4,7 @@ import SearchBar from "../../components/reusables/searchBar/SearchBar";
 import reusable from "../../components/reusables/styles/Reusable.Style";
 import styles from "./Shop.Styles";
 import AllProducts from "../../components/shop/allProducts/AllProducts";
+import ToastMessage from "../../components/toast/ToastMessage";
 
 const Shop = () => {
   return (
@@ -14,6 +15,7 @@ const Shop = () => {
       <ScrollView>
         <AllProducts />
       </ScrollView>
+      <ToastMessage />
     </SafeAreaView>
   );
 };

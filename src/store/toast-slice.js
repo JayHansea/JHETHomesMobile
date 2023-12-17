@@ -2,12 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const toastSlice = createSlice({
   name: "toast",
-  initialState: { toast: "" },
+  initialState: { toast: null }, // Change initial state to null
   reducers: {
     showToast(state, action) {
-      state.toast = {
-        message: action.payload.message,
-      };
+      state.toast = action.payload; // Set entire payload as toast
+    },
+    hideToast(state) {
+      state.toast = null; // Reset toast to null to hide it
     },
   },
 });
