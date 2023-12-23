@@ -14,13 +14,13 @@ const ToastMessage = () => {
       Animated.sequence([
         Animated.timing(opacity, {
           toValue: 1,
-          duration: 500,
+          duration: 200,
           useNativeDriver: true,
         }),
         Animated.delay(2000),
         Animated.timing(opacity, {
           toValue: 0,
-          duration: 500,
+          duration: 200,
           useNativeDriver: true,
         }),
       ]).start(() => {

@@ -7,27 +7,130 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 import { formatPrice } from "../../../utils";
+import { toastActions } from "../../../store/toast-slice";
 
 const CartItem = ({ image, name, price, quantity, id }) => {
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const incrementCartItem = () => {
-    dispatch(
-      cartActions.addToCart({
-        product_title: name,
-        product_photo: image,
-        product_price: price,
-        product_id: id,
-      })
-    );
+  const incrementCartItem = async () => {
+    try {
+      const response = await fetch(
+        "https://jhetmart-default-rtdb.firebaseio.com/cartItems.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+
+      if (response.ok) {
+        // Success: Item added to cart
+        dispatch(
+          cartActions.addToCart({
+            product_title: name,
+            product_photo: image,
+            product_price: price,
+            product_id: id,
+          })
+        );
+
+        // Dispatch the toast message
+        dispatch(
+          toastActions.showToast({ message: "Item added to cart successfully" })
+        );
+      } else {
+        // Failure: Unable to add item to cart
+        const errorMessage = await response.text(); // Get the error message from the response
+        dispatch(
+          toastActions.showToast({
+            message: `Adding item to cart failed: ${errorMessage}`,
+          })
+        );
+      }
+    } catch (error) {
+      // Network or other error
+      dispatch(
+        toastActions.showToast({
+          message: `Adding item to cart failed: ${error.message}`,
+        })
+      );
+    }
   };
 
-  const decrementCartItem = () => {
-    dispatch(cartActions.removeFromCart(id));
+  const decrementCartItem = async () => {
+    try {
+      const response = await fetch(
+        `https://jhetmart-default-rtdb.firebaseio.com/cartItems/${id}.json`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        // Success: Item deleted from the database
+        dispatch(cartActions.removeFromCart(id)); // Dispatch the deleteItem action from the cart slice
+
+        // Dispatch the toast message
+        dispatch(
+          toastActions.showToast({
+            message: "Item successfully removed from cart",
+          })
+        );
+      } else {
+        // Failure: Unable to delete item
+        const errorMessage = await response.text();
+        dispatch(
+          toastActions.showToast({
+            message: `Deleting item failed: ${errorMessage}`,
+          })
+        );
+      }
+    } catch (error) {
+      // Network or other error
+      dispatch(
+        toastActions.showToast({
+          message: `Deleting item failed: ${error.message}`,
+        })
+      );
+    }
   };
 
-  const deleteCartItem = () => {
-    dispatch(cartActions.deleteItem(id));
+  const deleteCartItem = async () => {
+    try {
+      const response = await fetch(
+        `https://jhetmart-default-rtdb.firebaseio.com/cartItems/${id}.json`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        // Success: Item deleted from the database
+        dispatch(cartActions.deleteItem(id)); // Dispatch the deleteItem action from the cart slice
+
+        // Dispatch the toast message
+        dispatch(
+          toastActions.showToast({
+            message: "Item successfully removed from cart",
+          })
+        );
+      } else {
+        // Failure: Unable to delete item
+        const errorMessage = await response.text();
+        dispatch(
+          toastActions.showToast({
+            message: `Deleting item failed: ${errorMessage}`,
+          })
+        );
+      }
+    } catch (error) {
+      // Network or other error
+      dispatch(
+        toastActions.showToast({
+          message: `Deleting item failed: ${error.message}`,
+        })
+      );
+    }
   };
 
   return (
