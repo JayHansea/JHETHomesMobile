@@ -4,24 +4,59 @@ import styles from "./SalesCard.Style";
 import ReusableText from "../../reusables/text/ReusableText";
 import { COLORS, SIZES } from "../../../constants/theme";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 import { formatPrice } from "../../../utils";
+import { toastActions } from "../../../store/toast-slice";
 
 const SalesCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
-  const addToCart = () => {
-    dispatch(
-      cartActions.addToCart({
-        product_title: product.product_title,
-        product_photo: product.product_photo,
-        product_price: formatPrice(product.product_price),
-        product_id: product.asin,
-      })
-    );
+  const addToCart = async () => {
+    try {
+      const response = await fetch(
+        "https://jhetmart-default-rtdb.firebaseio.com/cartItems.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+
+      if (response.ok) {
+        // Success: Item added to cart
+        dispatch(
+          cartActions.addToCart({
+            product_title: product.product_title,
+            product_photo: product.product_photo,
+            product_price: formatPrice(product.product_price),
+            product_id: product.asin,
+          })
+        );
+
+        // Dispatch the toast message
+        dispatch(
+          toastActions.showToast({ message: "Item added to cart successfully" })
+        );
+      } else {
+        // Failure: Unable to add item to cart
+        const errorMessage = await response.text(); // Get the error message from the response
+        dispatch(
+          toastActions.showToast({
+            message: `Adding item to cart failed: ${errorMessage}`,
+          })
+        );
+      }
+    } catch (error) {
+      // Network or other error
+      dispatch(
+        toastActions.showToast({
+          message: `Adding item to cart failed: ${error.message}`,
+        })
+      );
+    }
   };
 
   const toggleFavorite = () => {
